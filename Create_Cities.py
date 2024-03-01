@@ -41,6 +41,9 @@ class RandomCitiesList:
         self.y_range = y_range
         self.random_state = random_state
 
+    def set_num_cities(self, num_cities):
+        self.num_cities = num_cities
+
     def set_random_state(self, random_state):
         self.random_state = random_state
 
