@@ -20,7 +20,6 @@ Methods:
 
 set_settings(num_cities, x_range, y_range, random_state): Sets the parameters for generating cities.
 generate_random_cities(): Generates random city locations based on the specified settings.
-select_home_city(cities_list, random_state=42): Randomly selects a home city from the list of generated cities.
 generate_random_city_locations(num_cities, x_range, y_range, random_state=42): Generates random city locations within the specified ranges.
 calculate_distance(city1, city2): Calculates the Euclidean distance between two cities.
 create_distance_matrix(cities): Creates a distance matrix where each element represents the distance between two cities.
@@ -50,11 +49,6 @@ class RandomCitiesList:
     def generate_random_cities(self):
         self.cities = self.generate_random_city_locations(self.num_cities, self.x_range,
                                        self.y_range)
-
-    #Function to Home City 
-    def select_home_city(self):
-        random.seed(self.random_state)
-        self.home_city = random.choice(self.cities)
 
     # Function to generate random city locations
     def generate_random_city_locations(self, num_cities, x_range, y_range):
