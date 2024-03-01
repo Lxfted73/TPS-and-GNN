@@ -54,10 +54,11 @@ class RandomCitiesList:
     def generate_random_city_locations(self, num_cities, x_range, y_range):
         random.seed(self.random_state)
         cities = []
-        for _ in range(num_cities):
+        for i in range(num_cities):
             x = random.randint(*x_range)
             y = random.randint(*y_range)
-            cities.append((x, y))
+            city = {'x': x, 'y': y, 'index': i}
+            cities.append(city)
         return cities
 
     # Function to calculate distance between two cities
@@ -76,13 +77,38 @@ class RandomCitiesList:
     # Function to plot cities
     def plot_cities(self, cities):
         plt.figure(figsize=(8, 6))
-        plt.scatter(*zip(*cities), color='blue')
-        for i, (x, y) in enumerate(cities):
-            plt.text(x, y, str(i), fontsize=12)  # Label each city with its index
-        if self.home_city is not None:
-            plt.scatter(self.home_city[0], self.home_city[1], color='red', marker='x', label='Home City')
+        x_coords, y_coords, index = zip(*[(city['x'], city['y'], city['index']) for city in cities])
+        plt.scatter(x_coords, y_coords, color='blue')
+        for i in range(len(cities)):
+            # +1/-3 after coordinates for offset
+            plt.text(x_coords[i] + 1, y_coords[i] - 3, str(i), fontsize=12)  # Label each city with its index
         plt.title('Cities')
         plt.xlabel('X')
         plt.ylabel('Y')
         plt.grid(True)
         plt.show()
+
+    def plot_route(self, route):
+        plt.figure(figsize=(8, 6))
+        x_coords, y_coords, index = zip(*[(city['x'], city['y'], city['index']) for city in route])
+        plt.plot(x_coords, y_coords, color='blue')
+        for i in range(len(route)):
+            # +1/-3 after coordinates for offset
+            plt.text(x_coords[i] + 1, y_coords[i] - 3, str(i), fontsize=12)  # Label each city with its index
+        plt.title('Cities')
+        plt.xlabel('X')
+        plt.ylabel('Y')
+        plt.grid(True)
+        plt.show()
+
+# # Create an instance of the RandomCitiesList class
+# cities = RandomCitiesList()
+#
+# # Set random state
+# cities.set_random_state(41)
+#
+# # Generate random cities
+# cities.generate_random_cities()
+#
+# # Plot the cities
+# cities.plot_cities(cities.cities)
