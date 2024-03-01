@@ -17,7 +17,7 @@ To measure the efficiency of the brute-force algorithm, the code records the tim
 5. Visualizing the Shortest Route
 Once the shortest route is found, the code plots the path on the graph, highlighting the optimal sequence in which the cities should be visited.
 
-Conceptual Summary
+## Conceptual Summary
 Overall, the code demonstrates a basic implementation of solving the TSP using brute-force methodology. While suitable for small datasets, brute-force becomes inefficient for larger instances due to its computational complexity. This code provides a starting point for understanding TSP algorithms and serves as a foundation for exploring more efficient optimization techniques, such as heuristic algorithms (e.g., genetic algorithms, simulated annealing) or dynamic programming approaches.
 
 The computational time required for solving the Traveling Salesman Problem (TSP) increases dramatically as the number of cities grows, as demonstrated by the following data:
